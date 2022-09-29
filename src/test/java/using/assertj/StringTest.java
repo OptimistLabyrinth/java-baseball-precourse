@@ -12,8 +12,7 @@ public class StringTest {
     void splitOneCommaTwo() {
         String input = "1,2";
         String[] output = input.split(",");
-        assertThat(output).contains("1");
-        assertThat(output).contains("2");
+        assertThat(output).contains("1", "2");
     }
 
     @Test
@@ -30,8 +29,7 @@ public class StringTest {
         String input = "(1,2)";
         String inputReplaced = input.replaceAll("[()]", "");
         String[] output = inputReplaced.split(",");
-        assertThat(output).contains("1");
-        assertThat(output).contains("2");
+        assertThat(output).contains("1", "2");
     }
 
     @Test
