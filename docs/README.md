@@ -122,8 +122,7 @@ sequenceDiagram
     - GuessInputMessageBuilder
     - GuessResultMessageBuilder
     - GameFinishedMessageBuilder
-    - GameRestartMessageBuilder
-    - ScoreMessageBuilder
+    - GameRestartInputMessageBuilder
 
 ## Model 영역에서 사용할 클래스/인터페이스
 
