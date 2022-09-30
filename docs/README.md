@@ -115,6 +115,7 @@ sequenceDiagram
 - InputAcceptor
     - GuessInputAcceptor
     - GameRestartInputAcceptor
+- DisplayingMessage
 
 ## View 영역에서 사용할 클래스/인터페이스
 
