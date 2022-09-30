@@ -9,6 +9,11 @@ public class Score {
         this.ball = 0;
     }
 
+    public Score(Integer strike, Integer ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
     public Integer getStrike() {
         return strike;
     }

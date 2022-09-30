@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.view.messagebuilder;
 
 import baseball.model.scorebuilder.Score;
 
