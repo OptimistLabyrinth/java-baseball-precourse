@@ -7,7 +7,7 @@ public class GuessInputAcceptor implements InputAcceptor {
     @Override
     public String readLine() {
         GuessInputMessageBuilder guessInputMessageBuilder = new GuessInputMessageBuilder();
-        System.out.print(guessInputMessageBuilder.build(null));
+        System.out.print(guessInputMessageBuilder.build());
         return Console.readLine();
     }
 }

@@ -2,8 +2,7 @@ package baseball.view.messagebuilder;
 
 import baseball.model.scorebuilder.Score;
 
-public class GuessResultMessageBuilder implements MessageBuilder {
-    @Override
+public class GuessResultMessageBuilder {
     public String build(Score score) {
         StringBuilder scoreStringBuilder = new StringBuilder();
         if (score.getStrike() == 0 && score.getBall() == 0) {
