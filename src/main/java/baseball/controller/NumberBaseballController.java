@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 import baseball.controller.displayingmessage.DisplayingMessage;
 import baseball.controller.inputacceptor.GameRestartInputAcceptor;
@@ -12,12 +12,11 @@ import baseball.view.messagebuilder.GuessResultMessageBuilder;
 
 import java.util.Objects;
 
-public class NumberBaseball {
-    public void play() throws IllegalArgumentException {
+public class NumberBaseballController {
+    public void run() throws IllegalArgumentException {
         Boolean programRunning = true;
         while (programRunning) {
-            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-            String randomNumberString = randomNumberGenerator.generate();
+            String randomNumberString = generateRandomNumber();
             Boolean gamePlaying = true;
             while (gamePlaying) {
                 String userGuess = readUserGuess();
@@ -31,6 +30,11 @@ public class NumberBaseball {
             validateRestartOrExitInput(restartOrExit);
             programRunning = Objects.equals(restartOrExit, "1");
         }
+    }
+
+    public String generateRandomNumber() {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        return randomNumberGenerator.generate();
     }
 
     public String readUserGuess() {
