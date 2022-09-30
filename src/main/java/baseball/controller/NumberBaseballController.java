@@ -28,7 +28,7 @@ public class NumberBaseballController {
             }
             String restartOrExit = readUserRestartOrExit();
             validateRestartOrExitInput(restartOrExit);
-            programRunning = Objects.equals(restartOrExit, "1");
+            programRunning = getProgramRunningState(restartOrExit);
         }
     }
 
@@ -69,5 +69,9 @@ public class NumberBaseballController {
         if (!gameRestartInputValidator.validate(input)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public Boolean getProgramRunningState(String restartOrExit) {
+        return Objects.equals(restartOrExit, "1");
     }
 }
