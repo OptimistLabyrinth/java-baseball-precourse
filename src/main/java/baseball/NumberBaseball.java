@@ -1,13 +1,10 @@
 package baseball;
 
 import baseball.model.RandomNumberGenerator;
+import baseball.model.inputvalidator.GuessInputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class NumberBaseball {
     public void play() throws IllegalArgumentException {
@@ -36,18 +33,8 @@ public class NumberBaseball {
     }
 
     public void validateGuessInput(String guess) throws IllegalArgumentException {
-        if (guess.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-        for (int i = 0; i < 3; ++i) {
-            Character currentCharacter = guess.charAt(i);
-            if (currentCharacter.compareTo('1') < 0 || 0 < currentCharacter.compareTo('9')) {
-                throw new IllegalArgumentException();
-            }
-        }
-        List<String> guessSplit = Arrays.asList(guess.split(""));
-        Set<String> guessSet = new HashSet<>(guessSplit);
-        if (guessSet.size() != 3) {
+        GuessInputValidator guessInputValidator = new GuessInputValidator();
+        if (!guessInputValidator.validate(guess)) {
             throw new IllegalArgumentException();
         }
     }

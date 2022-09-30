@@ -3,7 +3,6 @@ package baseball.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.TestInfo;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +19,7 @@ public class RandomNumberGeneratorTest {
 
     @RepeatedTest(100)
     @DisplayName("숫자는 세 자리이다 - 100번")
-    public void lengthShouldBeThree(TestInfo testInfo) {
+    public void lengthShouldBeThree() {
         String randomNumberString = randomNumberGenerator.generate();
         assertThat(randomNumberString.length()).isEqualTo(3);
     }
