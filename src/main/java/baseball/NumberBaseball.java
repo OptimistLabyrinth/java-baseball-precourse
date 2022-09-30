@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.displayingmessage.DisplayingMessage;
 import baseball.controller.inputacceptor.GameRestartInputAcceptor;
 import baseball.controller.inputacceptor.GuessInputAcceptor;
 import baseball.model.RandomNumberGenerator;
@@ -23,7 +24,7 @@ public class NumberBaseball {
                 validateGuessInput(userGuess);
                 Score guessScore = calculateScore(randomNumberString, userGuess);
                 String scoreString = showScore(guessScore);
-                System.out.println(scoreString);
+                DisplayingMessage.println(scoreString);
                 gamePlaying = guessScore.getStrike() != 3;
             }
             String restartOrExit = readUserRestartOrExit();
