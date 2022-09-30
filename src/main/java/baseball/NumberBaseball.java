@@ -6,6 +6,7 @@ import baseball.model.inputvalidator.GuessInputValidator;
 import baseball.model.scorebuilder.Score;
 import baseball.model.scorebuilder.ScoreBuilder;
 import baseball.view.messagebuilder.GameFinishedMessageBuilder;
+import baseball.view.messagebuilder.GameRestartInputMessageBuilder;
 import baseball.view.messagebuilder.GuessResultMessageBuilder;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -57,7 +58,8 @@ public class NumberBaseball {
     public String readUserRestartOrExit() {
         GameFinishedMessageBuilder gameFinishedMessageBuilder = new GameFinishedMessageBuilder();
         System.out.println(gameFinishedMessageBuilder.build());
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        GameRestartInputMessageBuilder gameRestartInputMessageBuilder = new GameRestartInputMessageBuilder();
+        System.out.println(gameRestartInputMessageBuilder.build());
         return Console.readLine();
     }
 
