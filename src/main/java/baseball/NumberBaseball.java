@@ -3,13 +3,13 @@ package baseball;
 import baseball.controller.inputacceptor.GameRestartInputAcceptor;
 import baseball.controller.inputacceptor.GuessInputAcceptor;
 import baseball.model.RandomNumberGenerator;
+import baseball.model.inputvalidator.GameRestartInputValidator;
 import baseball.model.inputvalidator.GuessInputValidator;
 import baseball.model.scorebuilder.Score;
 import baseball.model.scorebuilder.ScoreBuilder;
 import baseball.view.messagebuilder.GameFinishedMessageBuilder;
 import baseball.view.messagebuilder.GameRestartInputMessageBuilder;
 import baseball.view.messagebuilder.GuessResultMessageBuilder;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
 
@@ -66,7 +66,8 @@ public class NumberBaseball {
     }
 
     public void validateRestartOrExitInput(String input) throws IllegalArgumentException {
-        if (!Objects.equals(input, "1") && !Objects.equals(input, "2")) {
+        GameRestartInputValidator gameRestartInputValidator = new GameRestartInputValidator();
+        if (!gameRestartInputValidator.validate(input)) {
             throw new IllegalArgumentException();
         }
     }
