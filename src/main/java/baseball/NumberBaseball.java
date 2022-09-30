@@ -1,15 +1,20 @@
 package baseball;
 
+import baseball.model.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 public class NumberBaseball {
     public void play() throws IllegalArgumentException {
         Boolean programRunning = true;
         while (programRunning) {
-            String randomNumberString = generateRandomNumberString();
+            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+            String randomNumberString = randomNumberGenerator.generate();
             Boolean gamePlaying = true;
             while (gamePlaying) {
                 String userGuess = readUserGuess();
@@ -23,19 +28,6 @@ public class NumberBaseball {
             validateRestartOrExitInput(restartOrExit);
             programRunning = Objects.equals(restartOrExit, "1");
         }
-    }
-
-    public String generateRandomNumberString() {
-        Set<Integer> numbers = new HashSet<Integer>();
-        StringBuilder randomNumberStringBuilder = new StringBuilder();
-        while (randomNumberStringBuilder.length() < 3) {
-            Integer randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                randomNumberStringBuilder.append(randomNumber);
-                numbers.add(randomNumber);
-            }
-        }
-        return randomNumberStringBuilder.toString();
     }
 
     public String readUserGuess() {
