@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.inputacceptor.GameRestartInputAcceptor;
 import baseball.controller.inputacceptor.GuessInputAcceptor;
 import baseball.model.RandomNumberGenerator;
 import baseball.model.inputvalidator.GuessInputValidator;
@@ -60,7 +61,8 @@ public class NumberBaseball {
         System.out.println(gameFinishedMessageBuilder.build());
         GameRestartInputMessageBuilder gameRestartInputMessageBuilder = new GameRestartInputMessageBuilder();
         System.out.println(gameRestartInputMessageBuilder.build());
-        return Console.readLine();
+        GameRestartInputAcceptor gameRestartInputAcceptor = new GameRestartInputAcceptor();
+        return gameRestartInputAcceptor.readLine();
     }
 
     public void validateRestartOrExitInput(String input) throws IllegalArgumentException {
