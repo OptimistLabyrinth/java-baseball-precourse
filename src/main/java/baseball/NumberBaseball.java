@@ -5,6 +5,7 @@ import baseball.model.RandomNumberGenerator;
 import baseball.model.inputvalidator.GuessInputValidator;
 import baseball.model.scorebuilder.Score;
 import baseball.model.scorebuilder.ScoreBuilder;
+import baseball.view.messagebuilder.GuessResultMessageBuilder;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
@@ -48,17 +49,8 @@ public class NumberBaseball {
     }
 
     public String showScore(Score score) {
-        StringBuilder scoreStringBuilder = new StringBuilder();
-        if (score.getStrike() == 0 && score.getBall() == 0) {
-            return "낫싱";
-        }
-        if (0 < score.getBall()) {
-            scoreStringBuilder.append(score.getBall()).append("볼 ");
-        }
-        if (0 < score.getStrike()) {
-            scoreStringBuilder.append(score.getStrike()).append("스트라이크");
-        }
-        return scoreStringBuilder.toString();
+        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
+        return guessResultMessageBuilder.build(score);
     }
 
     public String readUserRestartOrExit() {
