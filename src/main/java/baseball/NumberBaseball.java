@@ -7,8 +7,6 @@ import baseball.model.inputvalidator.GameRestartInputValidator;
 import baseball.model.inputvalidator.GuessInputValidator;
 import baseball.model.scorebuilder.Score;
 import baseball.model.scorebuilder.ScoreBuilder;
-import baseball.view.messagebuilder.GameFinishedMessageBuilder;
-import baseball.view.messagebuilder.GameRestartInputMessageBuilder;
 import baseball.view.messagebuilder.GuessResultMessageBuilder;
 
 import java.util.Objects;
@@ -57,10 +55,6 @@ public class NumberBaseball {
     }
 
     public String readUserRestartOrExit() {
-        GameFinishedMessageBuilder gameFinishedMessageBuilder = new GameFinishedMessageBuilder();
-        System.out.println(gameFinishedMessageBuilder.build());
-        GameRestartInputMessageBuilder gameRestartInputMessageBuilder = new GameRestartInputMessageBuilder();
-        System.out.println(gameRestartInputMessageBuilder.build());
         GameRestartInputAcceptor gameRestartInputAcceptor = new GameRestartInputAcceptor();
         return gameRestartInputAcceptor.readLine();
     }
