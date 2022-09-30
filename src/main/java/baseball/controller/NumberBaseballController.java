@@ -24,7 +24,7 @@ public class NumberBaseballController {
                 Score guessScore = calculateScore(randomNumberString, userGuess);
                 String scoreString = showScore(guessScore);
                 DisplayingMessage.println(scoreString);
-                gamePlaying = guessScore.getStrike() != 3;
+                gamePlaying = getGamePlayingState(guessScore);
             }
             String restartOrExit = readUserRestartOrExit();
             validateRestartOrExitInput(restartOrExit);
@@ -57,6 +57,10 @@ public class NumberBaseballController {
     public String showScore(Score score) {
         GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
         return guessResultMessageBuilder.build(score);
+    }
+
+    public Boolean getGamePlayingState(Score guessScore) {
+        return guessScore.getStrike() != 3;
     }
 
     public String readUserRestartOrExit() {
