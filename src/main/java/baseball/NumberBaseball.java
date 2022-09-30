@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.inputacceptor.GuessInputAcceptor;
 import baseball.model.RandomNumberGenerator;
 import baseball.model.inputvalidator.GuessInputValidator;
 import camp.nextstep.edu.missionutils.Console;
@@ -28,8 +29,8 @@ public class NumberBaseball {
     }
 
     public String readUserGuess() {
-        System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        GuessInputAcceptor guessInputAcceptor = new GuessInputAcceptor();
+        return guessInputAcceptor.readLine();
     }
 
     public void validateGuessInput(String guess) throws IllegalArgumentException {
