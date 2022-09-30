@@ -3,6 +3,8 @@ package baseball;
 import baseball.controller.inputacceptor.GuessInputAcceptor;
 import baseball.model.RandomNumberGenerator;
 import baseball.model.inputvalidator.GuessInputValidator;
+import baseball.model.scorebuilder.Score;
+import baseball.model.scorebuilder.ScoreBuilder;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
@@ -20,7 +22,7 @@ public class NumberBaseball {
                 Score guessScore = calculateScore(randomNumberString, userGuess);
                 String scoreString = showScore(guessScore);
                 System.out.println(scoreString);
-                gamePlaying = guessScore.strike != 3;
+                gamePlaying = guessScore.getStrike() != 3;
             }
             String restartOrExit = readUserRestartOrExit();
             validateRestartOrExitInput(restartOrExit);
@@ -40,48 +42,21 @@ public class NumberBaseball {
         }
     }
 
-    class Score {
-        Integer strike;
-        Integer ball;
-
-        public Score() {
-            this.strike = 0;
-            this.ball = 0;
-        }
-
-        @Override
-        public String toString() {
-            return "Score{" +
-                    "strike=" + strike +
-                    ", ball=" + ball +
-                    '}';
-        }
-    }
-
     public Score calculateScore(String target, String guess) {
-        Score score = new Score();
-        for (int i = 0; i < 3; ++i) {
-            if (target.charAt(i) == guess.charAt(i)) {
-                score.strike++;
-                continue;
-            }
-            if (target.indexOf(guess.charAt(i)) != -1) {
-                score.ball++;
-            }
-        }
-        return score;
+        ScoreBuilder scoreBuilder = new ScoreBuilder();
+        return scoreBuilder.build(target, guess);
     }
 
     public String showScore(Score score) {
         StringBuilder scoreStringBuilder = new StringBuilder();
-        if (score.strike == 0 && score.ball == 0) {
+        if (score.getStrike() == 0 && score.getBall() == 0) {
             return "낫싱";
         }
-        if (0 < score.ball) {
-            scoreStringBuilder.append(score.ball).append("볼 ");
+        if (0 < score.getBall()) {
+            scoreStringBuilder.append(score.getBall()).append("볼 ");
         }
-        if (0 < score.strike) {
-            scoreStringBuilder.append(score.strike).append("스트라이크");
+        if (0 < score.getStrike()) {
+            scoreStringBuilder.append(score.getStrike()).append("스트라이크");
         }
         return scoreStringBuilder.toString();
     }
