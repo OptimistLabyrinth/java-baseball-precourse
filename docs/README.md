@@ -123,7 +123,7 @@ sequenceDiagram
     - GuessInputMessageBuilder
     - GuessResultMessageBuilder
     - GameFinishedMessageBuilder
-    - GameRestartInputMessageBuilder
+- GameRestartInputMessageBuilder (메소드 build 의 파라미터가 위의 세 개의 구체 클래스와 달라서 별도로 분리)
 
 ## Model 영역에서 사용할 클래스/인터페이스
 
