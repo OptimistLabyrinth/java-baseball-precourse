@@ -28,11 +28,11 @@ public class ScoreBuilder {
 
     private void addScoreForCurrentDigit(Boolean sameCharacter, Boolean samePosition) {
         if (sameCharacter && samePosition) {
-            score.setStrike(score.getStrike() + 1);
+            score.incrementStrike();
             return;
         }
         if (samePosition) {
-            score.setBall(score.getBall() + 1);
+            score.incrementBall();
         }
     }
 }

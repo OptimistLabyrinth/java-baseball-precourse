@@ -18,16 +18,16 @@ public class Score {
         return strike;
     }
 
-    public void setStrike(Integer strike) {
-        this.strike = strike;
+    public void incrementStrike() {
+        this.strike = this.strike + 1;
     }
 
     public Integer getBall() {
         return ball;
     }
 
-    public void setBall(Integer ball) {
-        this.ball = ball;
+    public void incrementBall() {
+        this.ball = this.ball + 1;
     }
 
     @Override
