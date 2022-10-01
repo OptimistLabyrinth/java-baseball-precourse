@@ -1,7 +1,5 @@
 package baseball.view.messagebuilder;
 
-import baseball.model.scorebuilder.Score;
-
 public interface MessageBuilder {
-    public String build();
+    String build();
 }
