@@ -10,7 +10,7 @@ import java.util.function.Function;
 public class NumberBaseballProgramController {
     private Boolean programRunning;
     private Boolean gamePlaying;
-    Function<Void, Void> setGameStopped;
+    private final Function<Void, Void> setGameStopped;
 
     public NumberBaseballProgramController() {
         this.programRunning = true;
