@@ -8,13 +8,11 @@ import baseball.model.scorebuilder.Score;
 import baseball.model.scorebuilder.ScoreBuilder;
 import baseball.view.GuessResultMessageBuilder;
 
-import java.util.function.Function;
-
 public class NumberBaseballGameController {
     private final String randomNumberString;
-    private final Function<Void, Void> setGameStopped;
+    private final Runnable setGameStopped;
 
-    public NumberBaseballGameController(String randomNumberString, Function<Void, Void> setGameStopped) {
+    public NumberBaseballGameController(String randomNumberString, Runnable setGameStopped) {
         this.randomNumberString = randomNumberString;
         this.setGameStopped = setGameStopped;
     }
@@ -26,7 +24,7 @@ public class NumberBaseballGameController {
         String scoreString = scoreAsMessage(guessScore);
         MessagePrinter.println(scoreString);
         if (shouldStopGame(guessScore)) {
-            setGameStopped.apply(null);
+            setGameStopped.run();
         }
     }
 
