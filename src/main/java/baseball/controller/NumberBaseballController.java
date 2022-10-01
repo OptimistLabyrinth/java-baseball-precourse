@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.NumberBaseballConstant;
 import baseball.controller.displayingmessage.DisplayingMessage;
 import baseball.controller.inputacceptor.GameRestartInputAcceptor;
 import baseball.controller.inputacceptor.GuessInputAcceptor;
@@ -9,8 +10,6 @@ import baseball.model.inputvalidator.GuessInputValidator;
 import baseball.model.scorebuilder.Score;
 import baseball.model.scorebuilder.ScoreBuilder;
 import baseball.view.GuessResultMessageBuilder;
-
-import java.util.logging.Logger;
 
 public class NumberBaseballController {
     private Boolean programRunning;
@@ -75,7 +74,7 @@ public class NumberBaseballController {
     }
 
     public Boolean getGamePlayingState(Score guessScore) {
-        return guessScore.getStrike() != 3;
+        return !guessScore.getStrike().equals(NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER);
     }
 
     public String readUserRestartOrExit() {
@@ -91,6 +90,6 @@ public class NumberBaseballController {
     }
 
     public Boolean getProgramRunningState(String restartOrExit) {
-        return restartOrExit.equals("1");
+        return restartOrExit.equals(NumberBaseballConstant.GAME_RESTART.toString());
     }
 }

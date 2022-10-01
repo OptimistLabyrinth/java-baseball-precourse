@@ -1,5 +1,7 @@
 package baseball.model.scorebuilder;
 
+import baseball.constant.NumberBaseballConstant;
+
 public class ScoreBuilder {
     private final Score score;
 
@@ -8,7 +10,7 @@ public class ScoreBuilder {
     }
 
     public Score build(String target, String guess) {
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
             Boolean sameCharacter = isSameCharacter(target.charAt(i), guess.charAt(i));
             Boolean samePosition = isSamePosition(target, guess.charAt(i));
             addScoreForCurrentDigit(sameCharacter, samePosition);

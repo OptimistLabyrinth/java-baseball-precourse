@@ -1,10 +1,12 @@
 package baseball.model.inputvalidator;
 
-import java.util.logging.Logger;
+import baseball.constant.NumberBaseballConstant;
 
 public class GameRestartInputValidator implements InputValidator {
     @Override
     public Boolean validate(String input) {
-        return input != null && (input.equals("1") || input.equals("2"));
+        return input != null && (
+                input.equals(NumberBaseballConstant.GAME_RESTART.toString()) ||
+                        input.equals(NumberBaseballConstant.PROGRAM_EXIT.toString()));
     }
 }

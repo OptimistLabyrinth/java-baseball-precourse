@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.NumberBaseballConstant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -32,8 +33,11 @@ public class RandomNumberGeneratorTest {
     }
 
     private Boolean validateEachDigitInRangeOneToNine(String str) {
-        for (int i = 0; i < 3; ++i) {
-            if (str.charAt(i) < '1' && '9' < str.charAt(i)) {
+        for (int i = 0; i < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
+            if (
+                    str.charAt(i) < (char) (NumberBaseballConstant.MINIMUM_OF_EACH_DIGIT + '0') &&
+                            (char) (NumberBaseballConstant.MAXIMUM_OF_EACH_DIGIT + '0') < str.charAt(i)
+            ) {
                 return false;
             }
         }
@@ -48,8 +52,8 @@ public class RandomNumberGeneratorTest {
     }
 
     private Boolean validateNoDuplicateDigitInString(String str) {
-        Set<Character> digitsInString = new HashSet<Character>();
-        for (int i = 0; i < 3; ++i) {
+        Set<Character> digitsInString = new HashSet<>();
+        for (int i = 0; i < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
             digitsInString.add(str.charAt(i));
         }
         return digitsInString.size() == 3;
