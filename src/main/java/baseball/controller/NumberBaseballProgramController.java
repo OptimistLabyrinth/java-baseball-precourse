@@ -27,7 +27,7 @@ public class NumberBaseballProgramController {
         }
     }
 
-    private void whileProgramRunning() {
+    private void whileProgramRunning() throws IllegalArgumentException {
         String randomNumberString = generateRandomNumber();
         gamePlaying = true;
         while (gamePlaying) {

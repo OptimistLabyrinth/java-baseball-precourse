@@ -19,7 +19,7 @@ public class NumberBaseballGameController {
         this.setGameStopped = setGameStopped;
     }
 
-    public void whileGamePlaying() {
+    public void whileGamePlaying() throws IllegalArgumentException {
         String userGuess = readUserGuess();
         validateGuessInput(userGuess);
         Score guessScore = calculateScore(randomNumberString, userGuess);
