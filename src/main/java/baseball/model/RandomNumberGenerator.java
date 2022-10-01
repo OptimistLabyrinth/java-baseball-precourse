@@ -17,12 +17,12 @@ public class RandomNumberGenerator {
 
     public String generate() {
         while (randomNumberStringBuilder.length() < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER) {
-            whileLoop();
+            generateOneDigit();
         }
         return randomNumberStringBuilder.toString();
     }
 
-    private void whileLoop() {
+    private void generateOneDigit() {
         Integer randomNumber = Randoms.pickNumberInRange(1, 9);
         if (!numbers.contains(randomNumber)) {
             randomNumberStringBuilder.append(randomNumber);
