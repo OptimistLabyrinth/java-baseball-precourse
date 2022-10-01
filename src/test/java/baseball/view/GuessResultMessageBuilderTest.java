@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GuessResultMessageBuilderTest {
     @ParameterizedTest
-    @DisplayName("점수가 ball: 0 이면 메시지에 스트라이크 값 {0} 이 포함되어 있어야 한다.")
+    @DisplayName("점수가 ball: 0 이면 메시지에 스트라이크 값을 포함하고 있어야 한다.")
     @ValueSource(ints = {1, 2, 3})
     public void shouldContainStrikeValueOnlyWhenBallIsZero(Integer strike) {
         GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
@@ -32,7 +32,7 @@ public class GuessResultMessageBuilderTest {
     }
 
     @ParameterizedTest
-    @DisplayName("점수가 strike: 0 이면 메시지에 볼 값 {0} 이 포함되어 있어야 한다.")
+    @DisplayName("점수가 strike: 0 이면 메시지에 볼 값을 포함하고 있어야 한다.")
     @ValueSource(ints = {1, 2, 3})
     public void shouldContainBallValueWhenStrikeIsZero(Integer ball) {
         GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
@@ -54,7 +54,7 @@ public class GuessResultMessageBuilderTest {
     }
 
     @ParameterizedTest
-    @DisplayName("점수가 strike != 0, ball != 0 이면 스트라이크 값 {0}, 볼 값 {1} 을 모두 포함해야 한다.")
+    @DisplayName("점수가 strike != 0, ball != 0 이면 스트라이크 값, 볼 값을 모두 포함하고 있어야 한다.")
     @CsvSource(value = {"1:1", "1:2", "2:1"}, delimiter = ':')
     public void shouldContainBothStrikeValueAndBallValue(Integer strike, Integer ball) {
         GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
