@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.constant.NumberBaseballConstant;
-import baseball.controller.displayingmessage.DisplayingMessage;
+import baseball.controller.messageprinter.MessagePrinter;
 import baseball.controller.inputacceptor.GameRestartInputAcceptor;
 import baseball.controller.inputacceptor.GuessInputAcceptor;
 import baseball.model.RandomNumberGenerator;
@@ -47,7 +47,7 @@ public class NumberBaseballController {
         validateGuessInput(userGuess);
         Score guessScore = calculateScore(randomNumberString, userGuess);
         String scoreString = showScore(guessScore);
-        DisplayingMessage.println(scoreString);
+        MessagePrinter.println(scoreString);
         gamePlaying = getGamePlayingState(guessScore);
     }
 
