@@ -1,6 +1,6 @@
-package baseball.controller.displayingmessage;
+package baseball.controller.messageprinter;
 
-public class DisplayingMessage {
+public class MessagePrinter {
     public static void print(String message) {
         System.out.print(message);
     }
