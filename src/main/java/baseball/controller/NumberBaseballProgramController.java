@@ -5,20 +5,15 @@ import baseball.controller.inputacceptor.GameRestartInputAcceptor;
 import baseball.model.RandomNumberGenerator;
 import baseball.model.inputvalidator.GameRestartInputValidator;
 
-import java.util.function.Function;
-
 public class NumberBaseballProgramController {
     private Boolean programRunning;
     private Boolean gamePlaying;
-    private final Function<Void, Void> setGameStopped;
+    private final Runnable setGameStopped;
 
     public NumberBaseballProgramController() {
         this.programRunning = true;
         this.gamePlaying = true;
-        this.setGameStopped = (unused) -> {
-            NumberBaseballProgramController.this.gamePlaying = false;
-            return null;
-        };
+        this.setGameStopped = () -> NumberBaseballProgramController.this.gamePlaying = false;
     }
 
     public void run() throws IllegalArgumentException {
