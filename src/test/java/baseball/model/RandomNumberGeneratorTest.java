@@ -22,7 +22,7 @@ public class RandomNumberGeneratorTest {
     @DisplayName("숫자는 세 자리이다 - 100번")
     public void lengthShouldBeThree() {
         String randomNumberString = randomNumberGenerator.generate();
-        assertThat(randomNumberString.length()).isEqualTo(3);
+        assertThat(randomNumberString.length()).isEqualTo(NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER);
     }
 
     @RepeatedTest(100)

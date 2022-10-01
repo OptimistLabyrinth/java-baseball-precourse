@@ -23,7 +23,10 @@ public class RandomNumberGenerator {
     }
 
     private void generateOneDigit() {
-        Integer randomNumber = Randoms.pickNumberInRange(1, 9);
+        Integer randomNumber = Randoms.pickNumberInRange(
+                NumberBaseballConstant.MINIMUM_OF_EACH_DIGIT,
+                NumberBaseballConstant.MAXIMUM_OF_EACH_DIGIT
+        );
         if (!numbers.contains(randomNumber)) {
             randomNumberStringBuilder.append(randomNumber);
             numbers.add(randomNumber);
