@@ -6,16 +6,26 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RandomNumberGenerator {
+    private final Set<Integer> numbers;
+    private final StringBuilder randomNumberStringBuilder;
+
+    public RandomNumberGenerator() {
+        this.numbers = new HashSet<Integer>();
+        this.randomNumberStringBuilder = new StringBuilder();
+    }
+
     public String generate() {
-        Set<Integer> numbers = new HashSet<Integer>();
-        StringBuilder randomNumberStringBuilder = new StringBuilder();
         while (randomNumberStringBuilder.length() < 3) {
-            Integer randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                randomNumberStringBuilder.append(randomNumber);
-                numbers.add(randomNumber);
-            }
+            whileLoop();
         }
         return randomNumberStringBuilder.toString();
+    }
+
+    private void whileLoop() {
+        Integer randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!numbers.contains(randomNumber)) {
+            randomNumberStringBuilder.append(randomNumber);
+            numbers.add(randomNumber);
+        }
     }
 }
