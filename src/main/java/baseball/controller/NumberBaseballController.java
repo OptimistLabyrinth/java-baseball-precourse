@@ -8,33 +8,48 @@ import baseball.model.inputvalidator.GameRestartInputValidator;
 import baseball.model.inputvalidator.GuessInputValidator;
 import baseball.model.scorebuilder.Score;
 import baseball.model.scorebuilder.ScoreBuilder;
-import baseball.view.messagebuilder.GuessResultMessageBuilder;
+import baseball.view.GuessResultMessageBuilder;
 
-import java.util.Objects;
+import java.util.logging.Logger;
 
 public class NumberBaseballController {
+    private Boolean programRunning;
+    private Boolean gamePlaying;
+
+    public NumberBaseballController() {
+        this.programRunning = true;
+        this.gamePlaying = true;
+    }
+
     public void run() throws IllegalArgumentException {
-        Boolean programRunning = true;
         while (programRunning) {
-            String randomNumberString = generateRandomNumber();
-            Boolean gamePlaying = true;
-            while (gamePlaying) {
-                String userGuess = readUserGuess();
-                validateGuessInput(userGuess);
-                Score guessScore = calculateScore(randomNumberString, userGuess);
-                String scoreString = showScore(guessScore);
-                DisplayingMessage.println(scoreString);
-                gamePlaying = getGamePlayingState(guessScore);
-            }
-            String restartOrExit = readUserRestartOrExit();
-            validateRestartOrExitInput(restartOrExit);
-            programRunning = getProgramRunningState(restartOrExit);
+            whileProgramRunning();
         }
+    }
+
+    private void whileProgramRunning() {
+        String randomNumberString = generateRandomNumber();
+        gamePlaying = true;
+        while (gamePlaying) {
+            whileGamePlaying(randomNumberString);
+        }
+        String restartOrExit = readUserRestartOrExit();
+        validateRestartOrExitInput(restartOrExit);
+        programRunning = getProgramRunningState(restartOrExit);
     }
 
     public String generateRandomNumber() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         return randomNumberGenerator.generate();
+    }
+
+    private void whileGamePlaying(String randomNumberString) {
+        String userGuess = readUserGuess();
+        validateGuessInput(userGuess);
+        Score guessScore = calculateScore(randomNumberString, userGuess);
+        String scoreString = showScore(guessScore);
+        DisplayingMessage.println(scoreString);
+        gamePlaying = getGamePlayingState(guessScore);
     }
 
     public String readUserGuess() {
@@ -76,6 +91,6 @@ public class NumberBaseballController {
     }
 
     public Boolean getProgramRunningState(String restartOrExit) {
-        return Objects.equals(restartOrExit, "1");
+        return restartOrExit.equals("1");
     }
 }
