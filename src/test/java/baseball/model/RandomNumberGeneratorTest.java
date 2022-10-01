@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.constant.NumberBaseballConstant;
+import baseball.constant.NumberBaseballGameConstant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -14,7 +14,7 @@ public class RandomNumberGeneratorTest {
     RandomNumberGenerator randomNumberGenerator;
 
     @BeforeEach
-    private void setupBeforeEach() {
+    public void setupBeforeEach() {
         randomNumberGenerator = new RandomNumberGenerator();
     }
 
@@ -22,7 +22,7 @@ public class RandomNumberGeneratorTest {
     @DisplayName("숫자는 세 자리이다 - 100번")
     public void lengthShouldBeThree() {
         String randomNumberString = randomNumberGenerator.generate();
-        assertThat(randomNumberString.length()).isEqualTo(NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER);
+        assertThat(randomNumberString.length()).isEqualTo(NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER);
     }
 
     @RepeatedTest(100)
@@ -33,10 +33,10 @@ public class RandomNumberGeneratorTest {
     }
 
     private Boolean validateEachDigitInRangeOneToNine(String str) {
-        for (int i = 0; i < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
+        for (int i = 0; i < NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
             if (
-                    str.charAt(i) < (char) (NumberBaseballConstant.MINIMUM_OF_EACH_DIGIT + '0') &&
-                            (char) (NumberBaseballConstant.MAXIMUM_OF_EACH_DIGIT + '0') < str.charAt(i)
+                    str.charAt(i) < (char) (NumberBaseballGameConstant.MINIMUM_OF_EACH_DIGIT + '0') &&
+                            (char) (NumberBaseballGameConstant.MAXIMUM_OF_EACH_DIGIT + '0') < str.charAt(i)
             ) {
                 return false;
             }
@@ -53,7 +53,7 @@ public class RandomNumberGeneratorTest {
 
     private Boolean validateNoDuplicateDigitInString(String str) {
         Set<Character> digitsInString = new HashSet<>();
-        for (int i = 0; i < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
+        for (int i = 0; i < NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
             digitsInString.add(str.charAt(i));
         }
         return digitsInString.size() == 3;

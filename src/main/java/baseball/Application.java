@@ -1,10 +1,10 @@
 package baseball;
 
-import baseball.controller.NumberBaseballController;
+import baseball.controller.NumberBaseballProgramController;
 
 public class Application {
     public static void main(String[] args) throws IllegalArgumentException {
-        NumberBaseballController numberBaseballController = new NumberBaseballController();
-        numberBaseballController.run();
+        NumberBaseballProgramController numberBaseballProgramController = new NumberBaseballProgramController();
+        numberBaseballProgramController.run();
     }
 }

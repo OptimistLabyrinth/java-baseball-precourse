@@ -1,6 +1,6 @@
 package baseball.model.inputvalidator;
 
-import baseball.constant.NumberBaseballConstant;
+import baseball.constant.NumberBaseballGameConstant;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -15,10 +15,10 @@ public class GuessInputValidator implements InputValidator {
 
     @Override
     public Boolean validate(String guess) {
-        if (guess == null || guess.length() != NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER) {
+        if (guess == null || guess.length() != NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER) {
             return false;
         }
-        for (int i = 0; i < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
+        for (int i = 0; i < NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
             validateDigitInRangeOneToNine(guess.charAt(i));
         }
         validateAllDigitsUniqueNumber(guess);
@@ -27,8 +27,8 @@ public class GuessInputValidator implements InputValidator {
 
     private void validateDigitInRangeOneToNine(Character c) {
         if (
-                c < (char) (NumberBaseballConstant.MINIMUM_OF_EACH_DIGIT + '0') ||
-                        (char) (NumberBaseballConstant.MAXIMUM_OF_EACH_DIGIT + '0') < c
+                c < (char) (NumberBaseballGameConstant.MINIMUM_OF_EACH_DIGIT + '0') ||
+                        (char) (NumberBaseballGameConstant.MAXIMUM_OF_EACH_DIGIT + '0') < c
         ) {
             validateResult = false;
         }

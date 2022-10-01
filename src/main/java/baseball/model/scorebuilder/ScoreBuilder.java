@@ -1,6 +1,6 @@
 package baseball.model.scorebuilder;
 
-import baseball.constant.NumberBaseballConstant;
+import baseball.constant.NumberBaseballGameConstant;
 
 public class ScoreBuilder {
     private final Score score;
@@ -10,7 +10,7 @@ public class ScoreBuilder {
     }
 
     public Score build(String target, String guess) {
-        for (int i = 0; i < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
+        for (int i = 0; i < NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
             incrementStrikeOrBall(target, i, guess.charAt(i));
         }
         return score;
