@@ -37,7 +37,7 @@ public class NumberBaseballController {
         programRunning = getProgramRunningState(restartOrExit);
     }
 
-    public String generateRandomNumber() {
+    private String generateRandomNumber() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         return randomNumberGenerator.generate();
     }
@@ -51,45 +51,45 @@ public class NumberBaseballController {
         gamePlaying = getGamePlayingState(guessScore);
     }
 
-    public String readUserGuess() {
+    private String readUserGuess() {
         GuessInputAcceptor guessInputAcceptor = new GuessInputAcceptor();
         return guessInputAcceptor.readLine();
     }
 
-    public void validateGuessInput(String guess) throws IllegalArgumentException {
+    private void validateGuessInput(String guess) throws IllegalArgumentException {
         GuessInputValidator guessInputValidator = new GuessInputValidator();
         if (!guessInputValidator.validate(guess)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public Score calculateScore(String target, String guess) {
+    private Score calculateScore(String target, String guess) {
         ScoreBuilder scoreBuilder = new ScoreBuilder();
         return scoreBuilder.build(target, guess);
     }
 
-    public String showScore(Score score) {
+    private String showScore(Score score) {
         GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
         return guessResultMessageBuilder.build(score);
     }
 
-    public Boolean getGamePlayingState(Score guessScore) {
+    private Boolean getGamePlayingState(Score guessScore) {
         return !guessScore.getStrike().equals(NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER);
     }
 
-    public String readUserRestartOrExit() {
+    private String readUserRestartOrExit() {
         GameRestartInputAcceptor gameRestartInputAcceptor = new GameRestartInputAcceptor();
         return gameRestartInputAcceptor.readLine();
     }
 
-    public void validateRestartOrExitInput(String input) throws IllegalArgumentException {
+    private void validateRestartOrExitInput(String input) throws IllegalArgumentException {
         GameRestartInputValidator gameRestartInputValidator = new GameRestartInputValidator();
         if (!gameRestartInputValidator.validate(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public Boolean getProgramRunningState(String restartOrExit) {
+    private Boolean getProgramRunningState(String restartOrExit) {
         return restartOrExit.equals(NumberBaseballConstant.GAME_RESTART.toString());
     }
 }
