@@ -11,8 +11,8 @@ import baseball.view.GuessResultMessageBuilder;
 import java.util.function.Function;
 
 public class NumberBaseballGameController {
-    String randomNumberString;
-    Function<Void, Void> setGameStopped;
+    private final String randomNumberString;
+    private final Function<Void, Void> setGameStopped;
 
     public NumberBaseballGameController(String randomNumberString, Function<Void, Void> setGameStopped) {
         this.randomNumberString = randomNumberString;
