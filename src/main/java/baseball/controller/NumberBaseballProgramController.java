@@ -37,7 +37,7 @@ public class NumberBaseballProgramController {
         }
         String restartOrExit = readUserRestartOrExit();
         validateRestartOrExitInput(restartOrExit);
-        programRunning = getProgramRunningState(restartOrExit);
+        programRunning = shouldRestartNewGame(restartOrExit);
     }
 
     private String generateRandomNumber() {
@@ -57,7 +57,7 @@ public class NumberBaseballProgramController {
         }
     }
 
-    private Boolean getProgramRunningState(String restartOrExit) {
+    private Boolean shouldRestartNewGame(String restartOrExit) {
         return restartOrExit.equals(NumberBaseballProgramConstant.GAME_RESTART.toString());
     }
 }
