@@ -11,27 +11,17 @@ public class ScoreBuilder {
 
     public Score build(String target, String guess) {
         for (int i = 0; i < NumberBaseballConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
-            Boolean sameCharacter = isSameCharacter(target.charAt(i), guess.charAt(i));
-            Boolean samePosition = isSamePosition(target, guess.charAt(i));
-            addScoreForCurrentDigit(sameCharacter, samePosition);
+            incrementStrikeOrBall(target, i, guess.charAt(i));
         }
         return score;
     }
 
-    private Boolean isSameCharacter(Character targetCharacter, Character guessCharacter) {
-        return targetCharacter.equals(guessCharacter);
-    }
-
-    private Boolean isSamePosition(String target, Character guessCharacter) {
-        return target.indexOf(guessCharacter) != -1;
-    }
-
-    private void addScoreForCurrentDigit(Boolean sameCharacter, Boolean samePosition) {
-        if (sameCharacter && samePosition) {
+    private void incrementStrikeOrBall(String target, int i, Character guessCharacter) {
+        if (((Character) target.charAt(i)).equals(guessCharacter)) {
             score.incrementStrike();
             return;
         }
-        if (samePosition) {
+        if (target.indexOf(guessCharacter) != -1) {
             score.incrementBall();
         }
     }
