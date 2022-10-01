@@ -25,7 +25,7 @@ public class NumberBaseballGameController {
         Score guessScore = calculateScore(randomNumberString, userGuess);
         String scoreString = scoreAsMessage(guessScore);
         MessagePrinter.println(scoreString);
-        if (!keepPlaying(guessScore)) {
+        if (shouldStopGame(guessScore)) {
             setGameStopped.apply(null);
         }
     }
@@ -52,7 +52,7 @@ public class NumberBaseballGameController {
         return guessResultMessageBuilder.build(score);
     }
 
-    private Boolean keepPlaying(Score guessScore) {
-        return !guessScore.getStrike().equals(NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER);
+    private Boolean shouldStopGame(Score guessScore) {
+        return guessScore.getStrike().equals(NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER);
     }
 }
