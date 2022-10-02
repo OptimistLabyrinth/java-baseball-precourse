@@ -4,8 +4,7 @@ import baseball.constant.NumberBaseballGameConstant;
 import baseball.controller.inputacceptor.GuessInputAcceptor;
 import baseball.controller.messageprinter.MessagePrinter;
 import baseball.model.inputvalidator.GuessInputValidator;
-import baseball.model.scorebuilder.Score;
-import baseball.model.scorebuilder.ScoreBuilder;
+import baseball.model.score.Score;
 import baseball.view.GuessResultMessageBuilder;
 
 public class NumberBaseballGameController {
@@ -41,8 +40,7 @@ public class NumberBaseballGameController {
     }
 
     private Score calculateScore(String target, String guess) {
-        ScoreBuilder scoreBuilder = new ScoreBuilder(target, guess);
-        return scoreBuilder.build();
+        return new Score(target, guess);
     }
 
     private String scoreAsMessage(Score score) {

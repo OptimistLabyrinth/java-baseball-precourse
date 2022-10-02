@@ -1,7 +1,5 @@
 package baseball.view.messagebuilder;
 
-import baseball.model.scorebuilder.Score;
-
 public class GuessInputMessageBuilder implements MessageBuilder {
     @Override
     public String build() {

@@ -131,7 +131,11 @@ sequenceDiagram
 - InputValidator
     - GuessInputValidator
     - GameRestartInputValidator
-- ScoreBuilder
+- score (package)
+    - Score
+    - ScoreBuilder
+    - IsStrike
+    - IsBall
 
 -----
 
