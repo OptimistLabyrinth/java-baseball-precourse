@@ -1,4 +1,4 @@
-package baseball.model.scorebuilder;
+package baseball.model.score;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ScoreBuilderTest {
+public class ScoreTest {
     @ParameterizedTest(name = "{0}, {1}, 점수는 {2}-{3}")
     @DisplayName("세 자리 숫자 입력에 대해서 올바른 strike, ball 을 반환해야 한다")
     @CsvSource(value = {
@@ -43,8 +43,7 @@ public class ScoreBuilderTest {
             Integer expectedStrike,
             Integer expectedBall
     ) {
-        ScoreBuilder scoreBuilder = new ScoreBuilder(target, guess);
-        Score score = scoreBuilder.build();
+        Score score = new Score(target, guess);
         assertThat(score.getStrike()).isEqualTo(expectedStrike);
         assertThat(score.getBall()).isEqualTo(expectedBall);
     }

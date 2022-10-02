@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.model.scorebuilder.Score;
+import baseball.model.score.Score;
 
 public class GuessResultMessageBuilder {
     Score score;
