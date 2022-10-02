@@ -3,25 +3,28 @@ package baseball.model.scorebuilder;
 import baseball.constant.NumberBaseballGameConstant;
 
 public class ScoreBuilder {
-    private final Score score;
+    private final String target;
+    private final String guess;
 
-    public ScoreBuilder() {
-        this.score = new Score();
+    public ScoreBuilder(String target, String guess) {
+        this.target = target;
+        this.guess = guess;
     }
 
-    public Score build(String target, String guess) {
+    public Score build() {
+        Score score = new Score();
         for (int i = 0; i < NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER; ++i) {
-            incrementStrikeOrBall(target, i, guess.charAt(i));
+            incrementStrikeOrBall(i, score);
         }
         return score;
     }
 
-    private void incrementStrikeOrBall(String target, int i, Character guessCharacter) {
-        if (((Character) target.charAt(i)).equals(guessCharacter)) {
+    private void incrementStrikeOrBall(int i, Score score) {
+        if (((Character) target.charAt(i)).equals(guess.charAt(i))) {
             score.incrementStrike();
             return;
         }
-        if (target.indexOf(guessCharacter) != -1) {
+        if (target.indexOf(guess.charAt(i)) != -1) {
             score.incrementBall();
         }
     }

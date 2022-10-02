@@ -20,8 +20,8 @@ public class GameRestartInputValidatorTest {
     },
             delimiter = ':')
     public void onlyOneOrTwoReturnsTrue(String userInput, Boolean expectedResult) {
-        GameRestartInputValidator gameRestartInputValidator = new GameRestartInputValidator();
-        Boolean validateResult = gameRestartInputValidator.validate(userInput);
+        GameRestartInputValidator gameRestartInputValidator = new GameRestartInputValidator(userInput);
+        Boolean validateResult = gameRestartInputValidator.validate();
         assertThat(validateResult).isEqualTo(expectedResult);
     }
 }

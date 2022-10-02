@@ -34,20 +34,20 @@ public class NumberBaseballGameController {
     }
 
     private void validateGuessInput(String guess) throws IllegalArgumentException {
-        GuessInputValidator guessInputValidator = new GuessInputValidator();
-        if (!guessInputValidator.validate(guess)) {
+        GuessInputValidator guessInputValidator = new GuessInputValidator(guess);
+        if (!guessInputValidator.validate()) {
             throw new IllegalArgumentException();
         }
     }
 
     private Score calculateScore(String target, String guess) {
-        ScoreBuilder scoreBuilder = new ScoreBuilder();
-        return scoreBuilder.build(target, guess);
+        ScoreBuilder scoreBuilder = new ScoreBuilder(target, guess);
+        return scoreBuilder.build();
     }
 
     private String scoreAsMessage(Score score) {
-        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
-        return guessResultMessageBuilder.build(score);
+        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder(score);
+        return guessResultMessageBuilder.build();
     }
 
     private Boolean shouldStopGame(Score guessScore) {

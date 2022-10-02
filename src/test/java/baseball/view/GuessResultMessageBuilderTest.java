@@ -13,10 +13,10 @@ public class GuessResultMessageBuilderTest {
     @DisplayName("점수가 ball: 0 이면 메시지에 스트라이크 값을 포함하고 있어야 한다.")
     @ValueSource(ints = {1, 2, 3})
     public void shouldContainStrikeValueOnlyWhenBallIsZero(Integer strike) {
-        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
         Integer ball = 0;
         Score score = new Score(strike, ball);
-        String message = guessResultMessageBuilder.build(score);
+        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder(score);
+        String message = guessResultMessageBuilder.build();
         assertThat(message).contains(strike.toString());
     }
 
@@ -24,10 +24,10 @@ public class GuessResultMessageBuilderTest {
     @DisplayName("점수가 ball: 0 이면 메시지에 '볼' 이라는 문자열을 포함하지 않아야 한다.")
     @ValueSource(ints = {1, 2, 3})
     public void shouldNotContainStringBall(Integer strike) {
-        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
         Integer ball = 0;
         Score score = new Score(strike, ball);
-        String message = guessResultMessageBuilder.build(score);
+        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder(score);
+        String message = guessResultMessageBuilder.build();
         assertThat(message).doesNotContain("볼");
     }
 
@@ -35,10 +35,10 @@ public class GuessResultMessageBuilderTest {
     @DisplayName("점수가 strike: 0 이면 메시지에 볼 값을 포함하고 있어야 한다.")
     @ValueSource(ints = {1, 2, 3})
     public void shouldContainBallValueWhenStrikeIsZero(Integer ball) {
-        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
         Integer strike = 0;
         Score score = new Score(strike, ball);
-        String message = guessResultMessageBuilder.build(score);
+        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder(score);
+        String message = guessResultMessageBuilder.build();
         assertThat(message).contains(ball.toString());
     }
 
@@ -46,10 +46,10 @@ public class GuessResultMessageBuilderTest {
     @DisplayName("점수가 strike: 0 이면 메시지에 '스트라이크' 라는 문자열을 포함하지 않아야 한다.")
     @ValueSource(ints = {1, 2, 3})
     public void shouldNotContainStringStrike(Integer ball) {
-        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
         Integer strike = 0;
         Score score = new Score(strike, ball);
-        String message = guessResultMessageBuilder.build(score);
+        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder(score);
+        String message = guessResultMessageBuilder.build();
         assertThat(message).doesNotContain("스트라이크");
     }
 
@@ -57,9 +57,9 @@ public class GuessResultMessageBuilderTest {
     @DisplayName("점수가 strike != 0, ball != 0 이면 스트라이크 값, 볼 값을 모두 포함하고 있어야 한다.")
     @CsvSource(value = {"1:1", "1:2", "2:1"}, delimiter = ':')
     public void shouldContainBothStrikeValueAndBallValue(Integer strike, Integer ball) {
-        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder();
         Score score = new Score(strike, ball);
-        String message = guessResultMessageBuilder.build(score);
+        GuessResultMessageBuilder guessResultMessageBuilder = new GuessResultMessageBuilder(score);
+        String message = guessResultMessageBuilder.build();
         assertThat(message).contains(strike.toString(), ball.toString());
     }
 }

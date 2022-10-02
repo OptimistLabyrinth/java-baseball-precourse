@@ -7,14 +7,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GuessInputValidator implements InputValidator {
+    private final String guess;
     private Boolean validateResult;
 
-    public GuessInputValidator() {
+    public GuessInputValidator(String guess) {
+        this.guess = guess;
         this.validateResult = true;
     }
 
     @Override
-    public Boolean validate(String guess) {
+    public Boolean validate() {
         if (guess == null || guess.length() != NumberBaseballGameConstant.LENGTH_OF_TARGET_NUMBER) {
             return false;
         }
