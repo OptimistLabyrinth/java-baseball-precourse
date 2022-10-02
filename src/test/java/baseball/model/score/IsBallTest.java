@@ -27,6 +27,7 @@ public class IsBallTest {
             Character guessCharacter,
             Boolean expectedResult
     ) {
-        assertThat(IsBall.check(target, guessCharacter)).isEqualTo(expectedResult);
+        IsBall isBall = new IsBall(target, guessCharacter);
+        assertThat(isBall.check()).isEqualTo(expectedResult);
     }
 }

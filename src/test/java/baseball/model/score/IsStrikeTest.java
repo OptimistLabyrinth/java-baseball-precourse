@@ -31,6 +31,7 @@ public class IsStrikeTest {
             int index,
             Boolean expectedResult
     ) {
-        assertThat(IsStrike.check(target, guessCharacter, index)).isEqualTo(expectedResult);
+        IsStrike isStrike = new IsStrike(target, guessCharacter, index);
+        assertThat(isStrike.check()).isEqualTo(expectedResult);
     }
 }

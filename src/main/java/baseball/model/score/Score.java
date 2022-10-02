@@ -24,11 +24,13 @@ public class Score {
     }
 
     private void incrementScore(String target, String guess, int i) {
-        if (IsStrike.check(target, guess.charAt(i), i)) {
+        IsStrike isStrike = new IsStrike(target, guess.charAt(i), i);
+        if (isStrike.check()) {
             incrementStrike();
             return;
         }
-        if (IsBall.check(target, guess.charAt(i))) {
+        IsBall isBall = new IsBall(target, guess.charAt(i));
+        if (isBall.check()) {
             incrementBall();
         }
     }
