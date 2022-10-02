@@ -46,8 +46,8 @@ public class NumberBaseballProgramController {
     }
 
     private void validateRestartOrExitInput(String input) throws IllegalArgumentException {
-        GameRestartInputValidator gameRestartInputValidator = new GameRestartInputValidator();
-        if (!gameRestartInputValidator.validate(input)) {
+        GameRestartInputValidator gameRestartInputValidator = new GameRestartInputValidator(input);
+        if (!gameRestartInputValidator.validate()) {
             throw new IllegalArgumentException();
         }
     }

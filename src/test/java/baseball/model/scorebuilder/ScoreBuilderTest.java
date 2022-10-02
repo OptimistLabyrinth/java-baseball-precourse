@@ -16,8 +16,8 @@ public class ScoreBuilderTest {
             Integer expectedStrike,
             Integer expectedBall
     ) {
-        ScoreBuilder scoreBuilder = new ScoreBuilder();
-        Score score = scoreBuilder.build(target, guess);
+        ScoreBuilder scoreBuilder = new ScoreBuilder(target, guess);
+        Score score = scoreBuilder.build();
         assertThat(score.getStrike()).isEqualTo(expectedStrike);
         assertThat(score.getBall()).isEqualTo(expectedBall);
     }
