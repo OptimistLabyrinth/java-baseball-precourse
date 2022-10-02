@@ -18,7 +18,10 @@ public class IsStrikeTest {
             "123:2:2:false",
             "123:3:0:false",
             "123:3:1:false",
-            "123:3:2:true"
+            "123:3:2:true",
+            "123:9:0:false",
+            "123:9:1:false",
+            "123:9:2:false"
     },
             delimiter = ':'
     )
